@@ -1,0 +1,5 @@
+LocalFlowWpfClient/bin
+LocalFlowWpfClient/obj
+
+*.user
+.idea

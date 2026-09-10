@@ -1,0 +1,274 @@
+﻿<Window x:Class="LocalFlowWpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="LocalFlow — отправка файла"
+        Height="520"
+        Width="560"
+        MinHeight="440"
+        MinWidth="480"
+        Background="#F8F9FA"
+        FontFamily="Segoe UI"
+        FontSize="14"
+        AllowDrop="True"
+        DragOver="OnDragOver"
+        Drop="OnDrop">
+    <Window.Resources>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Padding" Value="16,9" />
+            <Setter Property="Margin" Value="0,0,8,0" />
+            <Setter Property="MinWidth" Value="110" />
+            <Setter Property="MinHeight" Value="36" />
+            <Setter Property="Background" Value="#1F2937" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="#1F2937" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#374151" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#111827" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd"
+                                        Property="Opacity"
+                                        Value="0.45" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SecondaryButton"
+               TargetType="Button"
+               BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#374151" />
+            <Setter Property="BorderBrush" Value="#D1D5DB" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#F3F4F6" />
+                                <Setter TargetName="bd"
+                                        Property="BorderBrush"
+                                        Value="#9CA3AF" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#E5E7EB" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd"
+                                        Property="Opacity"
+                                        Value="0.45" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DangerButton"
+               TargetType="Button"
+               BasedOn="{StaticResource PrimaryButton}">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#B42318" />
+            <Setter Property="BorderBrush" Value="#D1D5DB" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#FEF2F2" />
+                                <Setter TargetName="bd"
+                                        Property="BorderBrush"
+                                        Value="#FCA5A5" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd"
+                                        Property="Background"
+                                        Value="#FEE2E2" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd"
+                                        Property="Opacity"
+                                        Value="0.45" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="9,7" />
+            <Setter Property="MinHeight" Value="34" />
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#C7CDD4" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Style.Triggers>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="BorderBrush" Value="#6B7280" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="MinHeight" Value="34" />
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#C7CDD4" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style x:Key="FieldLabel"
+               TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#374151" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,0,0,6" />
+        </Style>
+        <Style x:Key="SecondaryText"
+               TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#6B7280" />
+        </Style>
+    </Window.Resources>
+    <Grid Margin="28">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="24" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="24" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="LocalFlow"
+                       FontSize="23"
+                       FontWeight="SemiBold"
+                       Foreground="#111827" />
+            <TextBlock Text="Отправка файла на сервер в локальной сети"
+                       Style="{StaticResource SecondaryText}"
+                       Margin="0,5,0,0" />
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <DockPanel Margin="0,0,0,7">
+                <TextBlock Text="Сервер в сети"
+                           Style="{StaticResource FieldLabel}"
+                           VerticalAlignment="Center" />
+                <Button DockPanel.Dock="Right"
+                        Content="Обновить"
+                        Command="{Binding RefreshServersCommand}"
+                        Style="{StaticResource SecondaryButton}"
+                        MinWidth="92"
+                        MinHeight="32"
+                        Padding="12,6"
+                        Margin="8,0,0,0"
+                        HorizontalAlignment="Right" />
+            </DockPanel>
+            <ComboBox ItemsSource="{Binding Servers}"
+                      SelectedItem="{Binding SelectedServer}"
+                      DisplayMemberPath="DisplayName"
+                      IsEnabled="{Binding IsIdle}"
+                      Margin="0,0,0,16" />
+            <TextBlock Text="Или адрес вручную"
+                       Style="{StaticResource FieldLabel}" />
+            <TextBox Text="{Binding ManualAddress, UpdateSourceTrigger=PropertyChanged}"
+                     IsEnabled="{Binding IsIdle}"
+                     Margin="0,0,0,18" />
+            <TextBlock Text="Файл"
+                       Style="{StaticResource FieldLabel}" />
+            <DockPanel Margin="0,0,0,7">
+                <Button DockPanel.Dock="Right"
+                        Content="Обзор"
+                        Command="{Binding BrowseFileCommand}"
+                        Style="{StaticResource SecondaryButton}"
+                        MinWidth="82"
+                        MinHeight="34"
+                        Padding="12,6"
+                        Margin="8,0,0,0" />
+                <TextBox Text="{Binding FilePath}"
+                         IsReadOnly="True"
+                         IsEnabled="{Binding IsIdle}" />
+            </DockPanel>
+            <TextBlock Text="Можно перетащить файл в это окно."
+                       Style="{StaticResource SecondaryText}"
+                       FontSize="12"
+                       Margin="0,0,0,0" />
+        </StackPanel>
+        <StackPanel Grid.Row="4"
+                    Orientation="Horizontal">
+            <Button Content="Отправить"
+                    Command="{Binding SendCommand}"
+                    Style="{StaticResource PrimaryButton}" />
+            <Button Content="Отмена"
+                    Command="{Binding CancelCommand}"
+                    Style="{StaticResource DangerButton}"
+                    Margin="0" />
+        </StackPanel>
+        <StackPanel Grid.Row="5"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,0">
+            <ProgressBar Height="4"
+                         Minimum="0"
+                         Maximum="100"
+                         Value="{Binding Progress}"
+                         Foreground="#374151"
+                         Background="#E5E7EB"
+                         BorderThickness="0" />
+            <TextBlock Text="{Binding Status}"
+                       TextWrapping="Wrap"
+                       Foreground="#374151"
+                       Margin="0,10,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>
