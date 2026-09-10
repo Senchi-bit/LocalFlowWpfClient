@@ -18,7 +18,7 @@ public partial class App : Application
                 if (!TryParseEndpoint(dest, out var endpoint))
                     throw new InvalidOperationException($"Некорректный адрес: {dest}");
 
-                await UdpFileSender.SendAsync(file, endpoint, null, CancellationToken.None);
+                await TcpFileSender.SendAsync(file, endpoint, null, CancellationToken.None);
                 Shutdown(0);
             }
             catch (Exception ex)

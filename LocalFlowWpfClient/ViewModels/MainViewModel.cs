@@ -174,7 +174,7 @@ internal sealed class MainViewModel : INotifyPropertyChanged, IDisposable
 
         try
         {
-            await UdpFileSender.SendAsync(FilePath, remote, progress, _sendCts.Token);
+            await TcpFileSender.SendAsync(FilePath, remote, progress, _sendCts.Token);
         }
         catch (OperationCanceledException)
         {
